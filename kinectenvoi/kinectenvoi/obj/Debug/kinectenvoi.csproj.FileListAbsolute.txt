@@ -1,0 +1,2 @@
+C:\Users\Benjamin\Desktop\IR5\DotNet\kinectenvoi\kinectenvoi\bin\Debug\kinectenvoi.exe.config
+C:\Users\Benjamin\Desktop\IR5\DotNet\kinectenvoi\kinectenvoi\obj\Debug\kinectenvoi.csprojResolveAssemblyReference.cache
