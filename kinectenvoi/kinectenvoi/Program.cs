@@ -153,6 +153,7 @@ namespace kinectenvoi
                                 }
                             }
                             
+                            //envoi de la réponse sur l'url
                             string url = @"http://esaip.westeurope.cloudapp.azure.com/api/Requests";
                             using (var client = new HttpClient())
                             {
