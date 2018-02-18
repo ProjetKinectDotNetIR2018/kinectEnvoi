@@ -18,6 +18,6 @@ non  : envoi un objet Answer("0",null,null)
 }  
   
 Nous avons pensé qu'il était beaucoup plus simple d'envoyer seulement un objet Answer avec seulement l'attribut code et le reste à null dans un fichier JSON plutôt que d'envoyer un objet Vote complet. En effet il sera plus simple de créer l'objet vote par le programme réception.  
-Cependant, par manque de temps, nous n'avons pas eu le temps de bien synchroniser et tester les deux programmes.
+Cependant, par manque de temps, nous n'avons pas eu le temps de finaliser et synchroniser les deux programmes.
 
 
