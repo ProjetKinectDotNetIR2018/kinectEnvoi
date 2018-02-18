@@ -144,32 +144,30 @@ namespace kinectenvoi
                             String zoneMain = checkZoneRH();
                             Console.WriteLine(zoneMain);
 
-                            if (zoneMain.Equals("Oui"))
+                            if (zoneMain.Equals("Non"))
                             {
-                                //MemoryStream stream1 = new MemoryStream();
-                                //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Answer));
-                                //ser.WriteObject(stream1, answer);
-
-                                //string json = JsonConvert.SerializeObject(answer);
-
-                                string url = @"http://esaip.westeurope.cloudapp.azure.com/api/Requests";
                                 Answer answer = new Answer("0", null, null);
+                            }else{
+                                if (zoneMain.Equals("Oui")){
+                                    Answer answer = new Answer("1", null, null);
+                                }
+                            }
+                            
+                            string url = @"http://esaip.westeurope.cloudapp.azure.com/api/Requests";
+                            using (var client = new HttpClient())
+                            {
+                                client.BaseAddress = new Uri(url);
+                                client.DefaultRequestHeaders.Accept.Clear();
+                                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                                using (var client = new HttpClient())
+                                string stringFromObject = JsonConvert.SerializeObject(answer);
+                                HttpContent content = new StringContent(stringFromObject, Encoding.UTF8, "application/json");
+                                content.Headers.Add("YourCustomHeader", "YourParameter");
+
+                                HttpResponseMessage response = client.PostAsync(url, content).Result;
+                                if (response.IsSuccessStatusCode)
                                 {
-                                    client.BaseAddress = new Uri(url);
-                                    client.DefaultRequestHeaders.Accept.Clear();
-                                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                                    string stringFromObject = JsonConvert.SerializeObject(answer);
-                                    HttpContent content = new StringContent(stringFromObject, Encoding.UTF8, "application/json");
-                                    content.Headers.Add("YourCustomHeader", "YourParameter");
-
-                                    HttpResponseMessage response = client.PostAsync(url, content).Result;
-                                    if (response.IsSuccessStatusCode)
-                                    {
-                                        // do something
-                                    }
+                                    // do something
                                 }
                             }
                         }
